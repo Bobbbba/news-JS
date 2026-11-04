@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
+const webpack = require('webpack');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
@@ -29,6 +30,9 @@ const baseConfig = {
     },
     plugins: [
         new DotenvWebpackPlugin(),
+        // new webpack.DefinePlugin({ // <--- 2. Добавьте плагин
+        //     'process.env.API_URL': JSON.stringify('https://rss-news-api.onrender.com/'),
+        // }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',

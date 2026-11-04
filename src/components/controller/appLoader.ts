@@ -2,11 +2,9 @@ import Loader from './loader';
 
 class AppLoader extends Loader {
     constructor() {
-        // Используем оператор "!" (non-null assertion) или приведение типов
-        const apiUrl = process.env.API_URL as string;
-        
-        super(apiUrl, {
-            // apiKey: process.env.API_KEY as string,
+        // Вставьте ваш настоящий ключ вместо 'ВАШ_КЛЮЧ_ЗДЕСЬ'
+        super('https://rss-news-api.onrender.com/', {
+            apiKey: '25117b1fe2f740829c0564ea9ef03ba3', 
         });
     }
 }
