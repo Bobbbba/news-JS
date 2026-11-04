@@ -1,6 +1,6 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { INewsResponse, ISourcesResponse, IArticle, ISource } from '../../types';
+import { IArticle, ISource } from '../../types'; // Импортируем только массивы
 
 export class AppView {
   private news: News;
@@ -11,17 +11,14 @@ export class AppView {
     this.sources = new Sources();
   }
 
-  // 1. Принимаем ответ от API с новостями
-  public drawNews(data: INewsResponse): void {
-    // Безопасно достаем массив статей (если data.articles нет, берем пустой массив)
-    const values: IArticle[] = data?.articles ? data.articles : [];
-    this.news.draw(values);
+  // Теперь принимаем просто массив статей
+  public drawNews(articles: IArticle[]): void {
+    this.news.draw(articles);
   }
 
-  // 2. Принимаем ответ от API с источниками
-  public drawSources(data: ISourcesResponse): void {
-    const values: ISource[] = data?.sources ? data.sources : [];
-    this.sources.draw(values);
+  // Теперь принимаем просто массив источников
+  public drawSources(sources: ISource[]): void {
+    this.sources.draw(sources);
   }
 }
 
